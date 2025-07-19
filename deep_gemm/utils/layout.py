@@ -80,6 +80,7 @@ def get_tma_aligned_size(x: int, element_size: int) -> int:
     return align(x, alignment)
 
 
+@torch.compile(dynamic=True)
 def get_col_major_tma_aligned_packed_tensor(x: torch.Tensor) -> torch.Tensor:
     # NOTES: for the extreme performance, you may rewrite/fuse this function in CUDA
     assert x.dtype == torch.float and x.dim() in (2, 3)
@@ -111,7 +112,7 @@ def check_sf_layout(sf: torch.Tensor,
                     num_groups: Optional[int],
                     tma_stride_check: bool = False,
                     type_check: Optional[torch.dtype] = None) -> torch.Tensor:
-    return sf
+    #return sf
     # Type check
     if type_check is not None:
         assert sf.dtype == type_check
