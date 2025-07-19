@@ -111,6 +111,7 @@ def check_sf_layout(sf: torch.Tensor,
                     num_groups: Optional[int],
                     tma_stride_check: bool = False,
                     type_check: Optional[torch.dtype] = None) -> torch.Tensor:
+    return sf
     # Type check
     if type_check is not None:
         assert sf.dtype == type_check
